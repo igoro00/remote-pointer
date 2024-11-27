@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pointer Overlay</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0); /* Fully transparent background */
+      }
+      #pointer {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        transition: all 0.1s;
+        display: none; /*Hidden by default */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Pointer SVG -->
+    <img id="pointer" src="./pointer.svg" alt="Pointer" />
+    <script>
+      const { ipcRenderer } = require('electron');
+
+      ipcRenderer.on('update-pointer', (event, { x, y }) => {
+        const pointer = document.getElementById('pointer');
+        pointer.style.left = `${x}px`;
+        pointer.style.top = `${y}px`;
+        pointer.style.display = 'block';
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "pointer",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^33.2.0",
+    "ws": "^8.18.0"
+  }
+}
